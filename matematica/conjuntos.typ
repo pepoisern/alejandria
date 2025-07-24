@@ -71,8 +71,8 @@ Dados los conjuntos $A$, $B$ y $C$ se definen las siguientes operaciones.
 La union de $A$ y $B$ es $A union B$ tal que $forall x [x in A union B => x in A or x in B]$
 
 === Propiedades
-+ $A = A union A$ 
-+ $A union B = B union A$ 
++ $A = A union A$
++ $A union B = B union A$
 + $A subset.eq A union B$
 + $A subset.eq B <=> A union B = B$
 + $A union (B union C)$ = $(A union B) union C$
@@ -81,8 +81,8 @@ La union de $A$ y $B$ es $A union B$ tal que $forall x [x in A union B => x in A
 La union de $A$ y $B$ es $A inter B = {x in A: x in B}$
 
 === Propiedades
-+ $A = A inter A$ 
-+ $A inter B = B inter A$ 
++ $A = A inter A$
++ $A inter B = B inter A$
 + $A inter B subset.eq A$
 + $A subset.eq B <=> A inter B = A$
 + $A inter (B inter C)$ = $(A inter B) inter C$

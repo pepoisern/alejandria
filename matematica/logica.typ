@@ -14,7 +14,7 @@ Se suelen usar letras para denotar una proposición. Sea $p$ la proposición #p,
 Los conectores lógicos se usan para construir *proposiciones compuestas* en base a otras proposiciones. Para definirlos se usan las tablas de verdad.
 
 == Tablas de verdad
-Las tablas de verdad nos permiten expresar cual es el valor de verdad de una proposición compuesta para cada combinación posible de valores de verdad de las proposiciones que la componen. Se organizan en filas y columnas. Se representan los valores de verdad verdadero y falso como 1 y 0 respectivamente. 
+Las tablas de verdad nos permiten expresar cual es el valor de verdad de una proposición compuesta para cada combinación posible de valores de verdad de las proposiciones que la componen. Se organizan en filas y columnas. Se representan los valores de verdad verdadero y falso como 1 y 0 respectivamente.
 #todo[Falta explicar]
 
 #grid(columns: (1fr,1fr,1fr,1fr),
@@ -24,7 +24,6 @@ Las tablas de verdad nos permiten expresar cual es el valor de verdad de una pro
     #truth_table(($p$, $not p$),
         0, 1,
         1, 0)
-    
 ][
     Conjunción $and$
     #truth_table(($p$, $q$, $p and q$),
@@ -118,7 +117,7 @@ Dos proposiciones $p$ y $r$ son lógicamente equivalentes, notamos $p <=> r$, si
   $p or T_0 <=> T_0$\
   $p and F_0 <=> F_0$\
 + Leyes de absorción\
-  $p and (p or q) <=> p$\ 
+  $p and (p or q) <=> p$\
   $p or (p and q) <=> p$
 ]
 #todo[Completar la tabla]

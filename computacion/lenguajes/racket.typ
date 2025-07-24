@@ -20,7 +20,6 @@
 === Expresiones S
 ```lisp     (name arg1 arg2 ...)```
 === Codificación de caracteres Unicode
-=== 
 ```lisp
     (<operador> <val1> [val2] [...])
     (<funcion> <val1> [val2] [...])
@@ -33,7 +32,7 @@ El estado es el conjunto de valores que cambia cuando ocurre un evento. Requiere
 === Estado inicial
 Se requiere definir un estado inicial que es el que será presente al iniciar un programa.
 === Función interpretar
-Interpreta el estado para mostrar al usuario la información necesaria. 
+Interpreta el estado para mostrar al usuario la información necesaria.
 == Expresión big-bang
 La expresión big-bang se encarga de manejar el estado en un lenguaje funcional como racket. La syntax es:
 ```lisp
@@ -87,7 +86,7 @@ Formas abreviadas:
 ```
 = Patrones
 == ¿Que son?
-Son funciones generalizadas que abstraen justamente patrones de comportamiento de funciones sobre listas. Ayudan a evitar la repetición y redundancia. 
+Son funciones generalizadas que abstraen justamente patrones de comportamiento de funciones sobre listas. Ayudan a evitar la repetición y redundancia.
 == Filter
 El patrón filter toma un predicado y una lista $L$ y devuelve una nueva lista $L_1$ con elementos que pertenecían a L. Justamente filtra $L$ y en $L_1$ quedan los elementos que hayan "sobrevivido" el filtro. Su signatura es la siguiente:\
 ```lisp ; filter: (X -> Boolean) (Listof X) -> Listof X```\
