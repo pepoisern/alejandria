@@ -79,18 +79,28 @@
 #let emptyset = $"\u{2300}"$
 #let powerset = $"\u{1D4AB}"$
 
+#let indent_first_line(doc) = {
+    set par(spacing: 0.65em, first-line-indent: 1em)
+    doc
+}
+
+#let indent_block(doc) = {
+    set par(spacing: 1.2em, first-line-indent: 0em)
+    doc
+}
+
 #let init(debug: false, font_size: 12pt, doc) = {
     let heading_numbering(..nums) = {
-        let depth = nums.pos().len() 
+        let depth = nums.pos().len()
         if depth == 1 {
             "[" + str(nums.pos().first()) + "]"
         }
         else if depth == 2 {
             "\u{27A5}"
-        } 
+        }
         else if depth == 3 {
             "  " + str(nums.pos().last()) + "."
-        } 
+        }
         else {
             str(nums.pos().first())
         }
@@ -100,20 +110,26 @@
         _debug.update(true)
     }
 
+    set par(justify: true)
     set page(margin: (rest: 2cm))
-    set par(spacing: 0.65em,
-        justify: true,
-        first-line-indent: 1em)
     set text(size: font_size, lang: "es")
     set heading(numbering: heading_numbering)
 
-    show math.in: it => { 
-        h(0em)
+    show math.in.not: it => {
+        h(0.05em)
+        set text(size: (font_size - 2pt))
+        math.in.not
+        set text(font_size)
+        h(0.05em)
+    }
+    show math.in: it => {
+        h(0.05em)
         set text(size: (font_size - 2pt))
         math.in
         set text(font_size)
-        h(0em)
+        h(0.05em)
     }
 
+    show: indent_block
     doc
 }
