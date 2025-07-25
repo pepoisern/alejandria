@@ -117,3 +117,30 @@ El conjunto diferencia de $A$ y $B$ es $A - B = {x in A: x in.not B}$
 // $A - B = B - A$\
 // ])
 + $(A - B) - C subset.eq A - (B - C)$
+
+== Complemento
+Al complemento de $A$ es $overline(A) = universe - A = {x in universe: x in.not A}$
+
+=== Propiedades
+Para algún $A subset.eq universe$
++ $A inter overline(A) = emptyset$
++ $A union overline(A) = universe$
+
+== Leyes de teoría de conjuntos
+Dados $A$, $B$ y $C$ incluidos en $universe$
+#let c = [#h(0.5em)]
++ $overline(overline(A)) = A$ #c (Ley de doble complemento)
++ $overline(A union B) = overline(A) inter overline(B)$\
+  $overline(A inter B) = overline(A) union overline(B)$ #c (Leyes de De Morgan)
++ $A union B = B union A$\
+  $A inter B = B inter A$ #c (Leyes conmutativas)
++ $A union (B union C) = (A union B) union C$\
+  $A inter (B inter C) = (A inter B) inter C$ #c (Leyes asociativas)
++ $A inter (B union C) = (A inter B) union (A inter C)$\
+  $A union (B inter C) = (A union B) inter (A union C)$ #c (Leyes distributivas)
++ $A union A = A$\
+  $A inter A = A$ #c (Leyes idempotentes)
++ $A union emptyset = A$\
+  $A inter universe = A$ #c (Leyes de identidad)
++ $A union (A inter B) = A$\
+  $A inter (A union B) = A$ #c (Leyes de absorción)
