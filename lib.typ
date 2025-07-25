@@ -117,16 +117,12 @@
 
     show math.in.not: it => {
         h(0.05em)
-        set text(size: (font_size - 2pt))
         math.in.not
-        set text(font_size)
         h(0.05em)
     }
     show math.in: it => {
         h(0.05em)
-        set text(size: (font_size - 2pt))
         math.in
-        set text(font_size)
         h(0.05em)
     }
 
