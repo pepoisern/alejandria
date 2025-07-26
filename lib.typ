@@ -80,6 +80,7 @@
 #let powerset = $"\u{1D4AB}"$
 #let Arg = "Arg"
 #let sin = "sen"
+#let gr = "gr"
 
 #let indent_first_line(doc) = {
     set par(spacing: 0.65em, first-line-indent: 1em)
@@ -130,6 +131,17 @@
                 }
             }).flatten()
         )
+    )
+}
+
+#let function_def(name, dom, codom, var, law) = {
+    box(
+        table(
+                stroke: none,
+                inset: (rest: 0.1em),
+                align: left + horizon,
+                columns: (auto, auto, auto, auto)
+        )[#name:][#dom][$->$][#codom][][#var][$|->$][#law]
     )
 }
 
