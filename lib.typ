@@ -78,6 +78,8 @@
 #let universe = $"\u{1D4E4}"$
 #let emptyset = $"\u{2300}"$
 #let powerset = $"\u{1D4AB}"$
+#let Arg = "Arg"
+#let sin = "sen"
 
 #let indent_first_line(doc) = {
     set par(spacing: 0.65em, first-line-indent: 1em)
@@ -87,6 +89,48 @@
 #let indent_block(doc) = {
     set par(spacing: 1.2em, first-line-indent: 0em)
     doc
+}
+
+#let casesAlign(spread: 0.5em, comma: true, ..cases) = {
+    let cases_inset(x, y) = {
+        if x == 0 {
+            if y == 0 {
+                (left: 0em, top: 0em, bottom: 0em, right: 1em)
+            }
+            else {
+                (left: 0em, top: spread, bottom: 0em, right: 1em)
+            }
+        }
+        else {
+            if y == 0 {
+                (left: 0em, top: 0em, bottom: 0em, right: 1em)
+            }
+            else {
+                (left: 0em, top: spread, bottom: 0em, right: 1em)
+            }
+        }
+    }
+    math.cases(
+        table(
+            inset: cases_inset,
+            align: left,
+            columns: (auto, auto),
+            stroke: none,
+            ..cases.pos().chunks(2).map(case => {
+                if case.len() == 2 {
+                    if comma == true {
+                        ([#case.first(), ], [#case.last()])
+                    }
+                    else {
+                        ([#case.first()], [#case.last()])
+                    }
+                }
+                else {
+                    case
+                }
+            }).flatten()
+        )
+    )
 }
 
 #let init(debug: false, font_size: 12pt, doc) = {
@@ -115,16 +159,20 @@
     set text(size: font_size, lang: "es")
     set heading(numbering: heading_numbering)
 
-    show math.in.not: it => {
-        h(0.05em)
-        math.in.not
-        h(0.05em)
+    if false { // Considering removal
+        show math.in.not: it => {
+            h(0.05em)
+            math.in.not
+            h(0.05em)
+        }
+        show math.in: it => {
+            h(0.05em)
+            it
+            h(0.05em)
+        }
     }
-    show math.in: it => {
-        h(0.05em)
-        math.in
-        h(0.05em)
-    }
+    show math.Re: "Re"
+    show math.Im: "Im"
 
     show: indent_block
     doc
