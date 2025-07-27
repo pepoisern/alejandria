@@ -12,32 +12,18 @@
 }
 
 #let truth_table(header, ..args) = {
-    let truth_table_inset(x, y) = {
-        if y == 0 {
-            (x: 4pt, bottom: 5pt, top: 1pt)
-        }
-        if y == 1 {
-            (x: 4pt, bottom: 2pt, top: 3pt)
-        }
-        else {
-            (x: 4pt, y: 2pt)
-        }
-    }
-    let truth_table_stroke(x, y) = {
-        let columns = header.len()
-        let s = stroke(thickness: 0.7pt, paint: black)
-        if x > 0 and x < columns {
-            if y == 0 {
-                (bottom: s, left: s)
-            }
-            (left: s)
-        }
-        else if y == 0 {
-            (bottom: s)
-        }
-    }
+    let truth_table_inset(x, y) = (
+// Otra opción, no se cual queda mejor.
+//        if      y == 0 { (x: 4pt, bottom: 5pt, top: 1pt) }
+//        else if y == 1 { (x: 4pt, bottom: 2pt, top: 3pt) }
+//        else           { (x: 4pt, bottom: 2pt, top: 2pt) }
+        x: 4pt,
+        bottom: if y == 0 { 5pt } else if y == 1 { 2pt } else { 2pt },
+        top:    if y == 0 { 1pt } else if y == 1 { 3pt } else { 2pt }
+    )
+    let s = stroke(thickness: 0.7pt, paint: black)
     table(inset: truth_table_inset,
-            stroke: truth_table_stroke,
+            stroke: (x, y) => (bottom: if y == 0 { s }, left: if x > 0 { s }),
             columns: header.map(i => auto),
             align: center + horizon,
             ..header,
@@ -45,18 +31,8 @@
 }
 
 #let inference_rule(dots: true, conclusion: none, ..premises) = {
-    let inference_rule_stroke(x, y) = {
-        let lines = premises.pos().len()
-        let s = stroke(paint: black)
-            if y == lines {
-                (top: s)
-            }
-            else {
-                none
-            }
-    }
     let symbol = if dots { $therefore$ } else {}
-    table(stroke: inference_rule_stroke,
+    table(stroke: (x, y) => (top: if y == premises.pos().len() { black } else { none }),
             inset: (top: 0.1em,
                 bottom: 0.5em,
                 left: 0.1em,
@@ -93,27 +69,9 @@
 }
 
 #let casesAlign(spread: 0.5em, comma: true, ..cases) = {
-    let cases_inset(x, y) = {
-        if x == 0 {
-            if y == 0 {
-                (left: 0em, top: 0em, bottom: 0em, right: 1em)
-            }
-            else {
-                (left: 0em, top: spread, bottom: 0em, right: 1em)
-            }
-        }
-        else {
-            if y == 0 {
-                (left: 0em, top: 0em, bottom: 0em, right: 1em)
-            }
-            else {
-                (left: 0em, top: spread, bottom: 0em, right: 1em)
-            }
-        }
-    }
     math.cases(
         table(
-            inset: cases_inset,
+            inset: (x, y) => (left: 0em, top: if y != 0 { spread } else { 0em }, bottom: 0em, right: 1em),
             align: left,
             columns: (auto, auto),
             stroke: none,
