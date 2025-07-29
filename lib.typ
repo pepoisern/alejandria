@@ -4,6 +4,7 @@
 
 //Do not use this in documents
 #let _debug = state("debug_mode", false)
+#let _font_size = state("font_size", 12pt)
 
 #let title(title, size: 24pt) = {
     set text(size)
@@ -58,7 +59,7 @@
 #let sin = "sen"
 #let gr = "gr"
 #let proyection(u, v) = $op("proy")_#u #v$
-#let angle(u, v) = $hat(#u\,#v,size: #70%)$
+#let angle(u, v) = context($hat(#u\,#v,size: #(1.2*_font_size.get()))$)
 
 #let indent_first_line(doc) = {
     set par(spacing: 0.65em, first-line-indent: 1em)
@@ -106,6 +107,7 @@
 }
 
 #let init(debug: false, font_size: 12pt, doc) = {
+    _font_size.update(font_size)
     let heading_numbering(..nums) = {
         let depth = nums.pos().len()
         if depth == 1 {
