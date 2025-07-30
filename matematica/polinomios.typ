@@ -1,6 +1,8 @@
 #import "../lib.typ" : *
 #show: init.with(debug: true)
 
+#let gr = "gr"
+
 #title[Polinomios]
 
 = Polinomio a coeficientes complejos

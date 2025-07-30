@@ -1,6 +1,8 @@
 #import "../lib.typ" : *
 #show: init.with(debug: true)
 
+#let Arg = "Arg"
+
 #title[Números Complejos]
 
 = Los números complejos

@@ -58,11 +58,7 @@
 #let Dom = "Dom"
 #let Codom = "Codom"
 #let Im = "Im"
-#let Arg = "Arg"
 #let sin = "sen"
-#let gr = "gr"
-#let proyection(u, v) = $op("proy")_#u #v$
-#let angle(u, v) = context($hat(#u\,#v,size: #(1.2*_font_size.get()))$)
 
 #let indent_first_line(doc) = {
     set par(spacing: 0.65em, first-line-indent: 1em)

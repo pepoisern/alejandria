@@ -1,6 +1,7 @@
 #import "../lib.typ" : *
 #show: init.with(debug: true)
 
+#let angle(u, v) = context($hat(#u\,#v,size: #(1.2*_font_size.get()))$)
 // Dependiendo el autor la notación es diferente, por eso lo generalizo con variables.
 // Producto escalar
 #let escalar = math.times

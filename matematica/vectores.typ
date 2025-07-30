@@ -1,6 +1,9 @@
 #import "../lib.typ" : *
 #show: init.with(debug: true)
 
+#let proyection(u, v) = $op("proy")_#u #v$
+#let angle(u, v) = context($hat(#u\,#v,size: #(1.2*_font_size.get()))$)
+
 #let uv = math.arrow($u$)
 #let vv = math.arrow($v$)
 #let wv = math.arrow($w$)
