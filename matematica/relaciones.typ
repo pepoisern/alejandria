@@ -110,7 +110,7 @@ Dado un conjunto ordenado $(A, Rr)$.
 + $a in A$ es un elemento minimal de $(A, Rr)$ si $forall x in A space x prec a -> x = a$
 + $a in A$ es un elemento maximal de $(A, Rr)$ si $forall x in A space a prec x -> x = a$
 
-Todos los conjuntos ordenados finitos no nulos tienen por lo menos un elemento minimal y un elemento maximal.
+Todos los conjuntos ordenados finitos no vacíos tienen por lo menos un elemento minimal y un elemento maximal.
 
 == Elementos mínimos y máximos
 Dado un conjunto ordenado $(A, Rr)$.
