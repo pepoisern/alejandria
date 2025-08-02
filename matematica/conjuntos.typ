@@ -9,7 +9,7 @@ Un conjunto puede tener un elemento y decimos que el elemento pertenece al conju
 Sea $A$ un conjunto, entonces si $a, b, c$ pertenecen a $A$ y son los únicos elementos de $A$ podemos definir al conjunto como $A = {a, b, c}$ así queda explícito entre llaves la lista de los elementos de $A$.
 
 = Igualdad de Conjuntos
-Se dice que dos conjuntos $A$ y $B$ son iguales si la proposición $forall x [x in A <=> x in B]$ es verdadera y se nota $A = B$.
+Se dice que dos conjuntos $A$ y $B$ son iguales si la proposición $forall x [x in A <-> x in B]$ es verdadera y se nota $A = B$.
 
 = Definición por comprensión
 Sea $p(x)$ una proposición abierta y $A$ un conjunto, el nuevo conjunto $B$ que contiene todos los elementos $x$ de $A$ tal que $p(x)$ es verdadera es por $B = {x in A: p(x)}$.
