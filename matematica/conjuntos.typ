@@ -9,7 +9,7 @@ Un conjunto puede tener un elemento y decimos que el elemento pertenece al conju
 Sea $A$ un conjunto, entonces si $a, b, c$ pertenecen a $A$ y son los únicos elementos de $A$ podemos definir al conjunto como $A = {a, b, c}$ así queda explícito entre llaves la lista de los elementos de $A$.
 
 = Igualdad de Conjuntos
-Se dice que dos conjuntos $A$ y $B$ son iguales si la proposición $forall x [x in A <-> x in B]$ es verdadera y se nota $A = B$.
+Se dice que dos conjuntos $A$ y $B$ son iguales y se nota $A = B$ si $x in A <=> x in B$.
 
 = Definición por comprensión
 Sea $p(x)$ una proposición abierta y $A$ un conjunto, el nuevo conjunto $B$ que contiene todos los elementos $x$ de $A$ tal que $p(x)$ es verdadera es por $B = {x in A: p(x)}$.
@@ -28,7 +28,7 @@ Existe el conjunto vacío #emptyset y es aquel que no tiene elementos. $exists e
 Existe un único conjunto vacío. Sea $A$ un conjunto, si no existe ningún $x$ tal que $x in A$ se da que $A = emptyset$.
 
 = Contención de conjuntos
-Decimos que un conjunto $A$ esta contenido en el conjunto $B$ o que $A$ es subconjunto de $B$ y notamos $A subset.eq B$ si se cumple #box[$forall x [x in A => x in B]$]. Si $A$ no esta contenido en $B$, osea $not (A subset.eq B)$ entonces $A subset.eq.not B$.
+Decimos que un conjunto $A$ esta contenido en el conjunto $B$ o que $A$ es subconjunto de $B$ y notamos $A subset.eq B$ si se cumple $x in A => x in B$. Si $A$ no esta contenido en $B$, osea $not (A subset.eq B)$ entonces $A subset.eq.not B$.
 
 == Contención estricta
 Se dice que $A$ esta contenido estrictamente en $B$ y se nota $A subset B$ si se cumple $A subset.eq B and A != B$.
@@ -59,7 +59,7 @@ La cardinalidad de un conjunto finito es igual a la cantidad de elementos que co
 #todo[No es prioridad]
 
 = Conjunto de partes
-Sea $A$ un conjunto, el conjunto de partes de $A$ notado $powerset(A)$ es $powerset(A) = {X in universe : X subset.eq A}$
+Sea $A$ un conjunto, el conjunto de partes de $A$ es $powerset(A) = {X in universe : X subset.eq A}$
 
 == Propiedades
 - $|A| = n => |powerset(A)| = 2^n = 2^(|A|)$
@@ -68,7 +68,7 @@ Sea $A$ un conjunto, el conjunto de partes de $A$ notado $powerset(A)$ es $power
 Dados los conjuntos $A$, $B$ y $C$ se definen las siguientes operaciones.
 
 == Union
-La union de $A$ y $B$ es $A union B$ tal que $forall x [x in A union B => x in A or x in B]$
+La union de $A$ y $B$ es $A union B$ tal que $x in A union B => x in A or x in B$
 
 === Propiedades
 + $A = A union A$
