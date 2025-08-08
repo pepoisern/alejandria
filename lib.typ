@@ -59,6 +59,7 @@
 #let Codom = "Codom"
 #let Im = "Im"
 #let sin = "sen"
+#let Xor = $#h(0.2375em)"\u{22BB}"#h(0.2375em)$
 
 #let indent_first_line(doc) = {
     set par(spacing: 0.65em, first-line-indent: 1em)
@@ -131,6 +132,7 @@
     set page(margin: (rest: 2cm))
     set text(size: font_size, lang: "es")
     set heading(numbering: heading_numbering)
+    set enum(numbering: "1.i.")
 
     if false { // Considering removal
         show math.in.not: it => {
