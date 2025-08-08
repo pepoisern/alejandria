@@ -21,7 +21,7 @@ Sea $n in NN_0 and forall i in NN_0 inter [0, n] space a_i in CC and a_n != 0$ e
 
 = Igualdad de polinomios
 Dados $p, q in CC[x]$ de ley $p(x) = display(sum_(i=0)^n a_i x^i)$ y $q(x) = display(sum_(i=0)^m b_i x^i)$ se dice que son iguales si se cumple:
-$ gr(p) = gr(q) and forall i in NN_0 inter [0, n] space a_i = b_i $
+$ gr(p) = gr(q) and forall i in NN_0 : i <= n space a_i = b_i $
 
 = Operaciones de polinomios
 Sean $p, q in CC[x]$ y $p(x) = display(sum_(i=0)^n a_i x^i), q(x) = display(sum_(i=0)^m b_i x^i)$ s
@@ -64,6 +64,11 @@ $ q(x) = x - alpha and alpha in CC => cases(p = c dot q + r, r = a_0 + alpha b_0
 El método gráfico es el siguiente:
 #todo[Explicación]
 
+Siendo $a_n$ el coeficiente de mayor grado de $p$, se escribe $p$ completo y ordenado en la parte superior.
+El primer coeficiente se pasa a la última fila. El valor obtenido se multiplica por $alpha$ y se anota en la segunda
+fila, debajo del próximo coeficiente de $p$. Los valores se suman, el resultado se anota debajo y se repite el proceso.
+Los valores de la última fila (excluyendo al último) son los coeficientes ordenados de $c(x)$. 
+El último valor representa al resto $r$ de la división.
 #align(center)[#table(stroke: (x, y) => (
             top: if y == 2 { black } else { none },
             left: if x == 1 { black } else { none },
