@@ -1,6 +1,6 @@
 # Compilación de archivos .typ
 ```bash
-typst compile --root .. complejos.typ
+typst compile --root .. complejos.typ ../pdfs/complejos.pdf
 ```
 Esto suponiendo que el archivo a compilar es "complejos.typ" y que se está parado en la carpeta "matematica".
 
