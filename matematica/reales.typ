@@ -27,11 +27,39 @@ Sean $a, b, c in RR$ entonces si $a + b = a + c$ se da que $b = c$.
 
 === Demostración
 
-$forall a, b, c in RR bracket.l a + b = a + c bracket.r attach(=>, t: "A5") exists y bar a + y = 0$
+Sean $a$, $b$ y $c$ en $RR$, de modo que $a + b = a + c$, llamamos $y$ al elemento opuesto de a (es decir, existe un $y$ tal que $a + y = y + a = 0$.
+
+Dicho esto, formamos la ecuación $y + (a + b)$, que será equivalente a $y + (a + c)$ por hipótesis.
+
+$y + (a + b) = y + (a + b)$
+
+Gracias a la asociatividad de la suma, tenemos que:
+
+$(y + a) + b = (y + a) + c$
+
+Podemos usar el axioma del elemento opuesto para transformar $y + a$ en $0$.
+
+Nos quedan así las siguientes ecuaciones (aun equivalentes):
+
+$0 + b = 0 + c$
+
+Podemos entonces usar el axioma de existencia de los elementos neutros para dar con la conclusión:
+
+$b = c$
+
+=== Demostración (simbólica)
+
+$forall a, b, c in RR bracket.l a + b = a + c bracket.r attach(=>, t: "(1)") exists y bracket.l a + y = 0 bracket.r$
 
 $therefore$
-$cases(reverse: #true, y + (a + b) attach(eq, t:"A2") (y + a) + b = 0 + b attach(eq, t:"A4") b, y + (a + b) = y + (a + c) attach(eq, t:"A2") (y + a) + c = 0 + c attach(eq, t:"A4") c) => b = c$
 
+$cases(reverse: #true, y + (a + b) attach(eq, t:"(2)") (y + a) + b = 0 + b attach(eq, t:"(3)") b, y + (a + b) = y + (a + c) attach(eq, t:"(2)") (y + a) + c = 0 + c attach(eq, t:"(3)") c) => b = c$
+
+(1) $because$ Existencia del elemento neutro de la suma
+
+(2) $because$ Propiedad asociativa de la suma
+
+(3) $because$ Existencia del elemento opuesto de la suma
 
 == Diferencia (o resta) de números reales
 Primero definimos que dado un $a in RR$ su elemento opuesto se nota $-a$ tal que $a + (-a) = 0$.
