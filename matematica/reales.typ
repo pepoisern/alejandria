@@ -19,12 +19,19 @@ Dados los números reales $a, b, c in RR$ de cumplen:
 + Existencia de elementos opuestos: $forall a [ exists b [ a + b = 0 ]]$
 + Existencia de elementos recíprocos (o inversos): $forall a != 0 space exists b [ a b = 1 ]$
 
+= Teoremas de cuerpo
 == Ley de simplificación para la suma
 También llamada propiedad cancelativa de la suma es:
 
 Sean $a, b, c in RR$ entonces si $a + b = a + c$ se da que $b = c$.
 
-#todo[Demostración]
+=== Demostración
+
+$forall a, b, c in RR bracket.l a + b = a + c bracket.r attach(=>, t: "A5") exists y bar a + y = 0$
+
+$therefore$
+$cases(reverse: #true, y + (a + b) attach(eq, t:"A2") (y + a) + b = 0 + b attach(eq, t:"A4") b, y + (a + b) = y + (a + c) attach(eq, t:"A2") (y + a) + c = 0 + c attach(eq, t:"A4") c) => b = c$
+
 
 == Diferencia (o resta) de números reales
 Primero definimos que dado un $a in RR$ su elemento opuesto se nota $-a$ tal que $a + (-a) = 0$.
