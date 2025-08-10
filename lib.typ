@@ -52,12 +52,13 @@
     )
 }
 
-#let universe = $"\u{1D4E4}"$
-#let emptyset = $"\u{2300}"$
-#let powerset = $"\u{1D4AB}"$
+#let universe = "\u{1D4E4}"
+#let emptyset = "\u{2300}"
+#let powerset = "\u{1D4AB}"
 #let Dom = "Dom"
 #let Codom = "Codom"
 #let Im = "Im"
+#let Rec = "Rec"
 #let sin = "sen"
 #let Xor = $#h(0.2375em)"\u{22BB}"#h(0.2375em)$
 
