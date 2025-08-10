@@ -24,7 +24,13 @@ También llamada propiedad cancelativa de la suma es:
 
 Sean $a, b, c in RR$ entonces si $a + b = a + c$ se da que $b = c$.
 
-#todo[Demostración]
+=== Demostración
+Sean $a, b, c, d in RR$ tal que $a + b = a + c = d$. Por la existencia del elemento opuesto sabemos que hay un $y in  RR$ tal que $y + a = 0$ entonces:
+1. $y + d = y + (a + b) attach(=, t: "(i)") (y + a) + b = 0 + b attach(=, t: "(ii)") b$
+2. $y + d = y + (a + c) = (y + a) + c = 0 + c = c$
+$therefore b = c$
+
+#super[(i) Propiedad asociativa] #super[(ii) Existencia del elemento neutro]
 
 == Diferencia (o resta) de números reales
 Primero definimos que dado un $a in RR$ su elemento opuesto se nota $-a$ tal que $a + (-a) = 0$.
