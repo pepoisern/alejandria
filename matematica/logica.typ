@@ -1,225 +1,178 @@
-#import "../lib.typ" : *
-#show: init.with(debug: true)
+#import "../macros.typ": *
+#import "../estilo.typ": *
 
-#title[Lógica]
-= Proposiciones
-== ¿Que son?
-#let prop = ["Las semanas tienen siete días"]
-#let p = ["Los pájaros vuelan"]
-Las proposiciones son expresiones a las que se les puede asignar un valor de verdad ya sea verdadero o falso pero no ambos. Por ejemplo la proposición #prop tiene valor de verdad verdadero ya que en efecto las semanas tienen siete días.
+#let color = blue
 
-Se suelen usar letras para denotar una proposición. Sea $p$ la proposición #p, podemos decir que $p$ tiene valor de verdad verdadero refiriéndonos a que la proposición #p tiene valor de verdad verdadero.
+#show: init.with( 
+  color: color,
+  //debug: true
+)
 
-= Conectores lógicos
-Los conectores lógicos se usan para construir *proposiciones compuestas* en base a otras proposiciones. Para definirlos se usan las tablas de verdad.
+= Lógica
+== Proposiciones
+=== Proposición
+Se considera proposición a cualquier oración a la cual se le pueda asignar un valor de verdad ($V$ o $F$). Se las suele nombrar con una única letra minúscula ($p,q,s$).
 
-== Tablas de verdad
-Las tablas de verdad nos permiten expresar cual es el valor de verdad de una proposición compuesta para cada combinación posible de valores de verdad de las proposiciones que la componen. Se organizan en filas y columnas. Se representan los valores de verdad verdadero y falso como 1 y 0 respectivamente.
-#todo[Falta explicar]
+=== Conectores Lógicos
+Son operadores de proposiciones que resultan en otras proposiciones.
+- *Negación*: La negación de $p$ se simboliza $not p$, y su valor de verdad es el opuesto de $p$.
+- *Conjunción*: La conjunción entre $p$ y $q$ es $p and q$, y es verdadera sólo si ambas proposiciones lo son.
+- *Disyunción*:
+  - Inclusiva: Se simboliza $p or q$ y es verdadero si al menos $p$ o $q$ son verdaderas.
+  - Exclusiva: Se simboliza $p xor q$ y es verdadero si $p$ o $q$ son verdaderas, pero no ambas.
+- *Implicación*: Se simboliza $p -> q$, a $p$ se le llama _hipótesis_ y $q$ _tesis_, y es verdadero salvo que $p$ sea verdadero, y $q$ no.
+- *Bicondicional*: Se simboliza $p bic q$, y es verdadero cuando $p$ y $q$ tienen el mismo valor de verdad.
 
-#grid(columns: (1fr,1fr,1fr,1fr),
-    stroke: none,
-    align: center)[
-    Negación $not$
-    #truth_table(($p$, $not p$),
-        0, 1,
-        1, 0)
-][
-    Conjunción $and$
-    #truth_table(($p$, $q$, $p and q$),
-        0, 0, 0,
-        0, 1, 0,
-        1, 0, 0,
-        1, 1, 1)
-][
-    Disyunción $or$
-    #truth_table(($p$, $q$, $p or q$, $p" \u{22BB} "q$),
-        0, 0, 0, 0,
-        0, 1, 1, 1,
-        1, 0, 1, 1,
-        1, 1, 1, 0)
-][
-    Implicación $->$
-    #truth_table(($p$, $q$, $p->q$),
-        0, 0, 1,
-        0, 1, 1,
-        1, 0, 0,
-        1, 1, 1)
-][
-    Bicondicional $<->$
-    #truth_table(($p$, $q$, $p<->q$),
-        0, 0, 1,
-        0, 1, 0,
-        1, 0, 0,
-        1, 1, 1)
+=== Proposiciones Primitivas
+Son aquellas proposiciones que no pueden ser formadas a partir de conectores lógicos.
+
+=== Tautologías y Contradicciones
+Una proposición compuesta se llama _tautología_ si es verdadera para cualquier combinación de asignaciones de verdad de las proposiciones que la componen. Lo contrario es llamado _contradicción_.
+
+=== Equivalencia Lógica
+Dos proposiciones $s_1, s_2$ son _lógicamente equivalentes_ si tienen la misma tabla de verdad. Esto se simboliza $s_1 iff s_2$. La equivalencia lógica tiene las siguientes propiedades:
+- $s iff s$
+- si $s_1 iff s_2$, entonces $s_2 iff s_1$
+- si $s_1 iff s_2$ y $s_2 iff s_3$, entonces $s_1 iff s_3$
+
+== Leyes de la Lógica
+Sean $p,q,r$ proposiciones primitivas, $T_0$ y $F_0$ una _tautología_ y _contradicción_ respectivamente, se cumplen:
+
+#wide_list(
+      [$not not p iff p$ #h(3fr)],
+      [Ley de doble negación],
+      [$not(p or q) iff not p and not q$ \
+       $not(p and q) iff not p or not q$ #h(3fr)],
+      [Leyes de De Morgan],
+      [$p or q iff q or p$ \
+       $p and q iff q and p$ #h(3fr)],
+      [Leyes Conmutativas],
+      [$p or (q or r) iff (p or q) or r$ \
+       $p and (q and r) iff (p and q) and r$ #h(3fr)],
+      [Leyes Asociativas],
+      [$p or (q and r) iff (p or q) and (p or r)$ \
+       $p and (q or r) iff (p and q) or (p and r)$ #h(3fr)],
+      [Leyes Distributivas],
+      [$p or p iff p$ \
+       $p and p iff p$ #h(3fr)],
+      [Leyes Idempotentes],
+      [$p or F_0 iff p$ \
+       $p and T_0 iff p$ #h(3fr)],
+      [Leyes de Neutro],
+     [$p or not p iff T_0$ \
+      $p and not p iff F_0$ #h(3fr)],
+     [Leyes Inversas],
+     [$p or T_0 iff T_0$ \
+      $p and F_0 iff F_0$ #h(3fr)],
+     [Leyes de Dominación],
+     [$p and (p or q) iff p$ \
+      $p or (p and q) iff p$ #h(3fr)],
+    [Leyes de Absorción],)
+
+== Inferencia
+=== Argumento
+Se le llama *argumento* a una _proposición compuesta_ de la forma:
+
+$ p_1 and p_2 and p_3 and dots and p_k then q $
+
+Llamamos _premisas_ al conjunto de todas las $p$, y _conclusión_ a $q$. Se dice que el argumento es *válido* si es una _tautología_, escrito:
+
+$ p_1 and p_2 and p_3 and dots and p_k implies q $
+
+También llamamos a esto *_Implicacion Lógica_*.
+
+#example(color: color)[
+  Si intentamos demostrar
+  $ (p then r) and (r then s) and (t or not s) and (not t or u) and not u implies not p $
+  deberíamos ver que
+  $ (p then r) and (r then s) and (t or not s) and (not t or u) and not u then not p $
+  es una *tautología*. Para que una _implicancia_ sea falsa, la hipótesis debe ser verdadera, y la tesis falsa. Entonces supongamos que
+
+  $ p then r, quad r then s, quad t or not s, quad not t or u, quad not u $
+  son todas verdaderas y $not p$ falso, osea $p$ verdadero.
+  - si $p$ #text(color)[*verdadero*] y $p then r$ #text(color)[*verdadero*], $r$ #text(color)[*verdadero*].
+  - si $r$ #text(color)[*verdadero*] y $r then s$ #text(color)[*verdadero*], $s$ #text(color)[*verdadero*].
+  - si $s$ #text(color)[*verdadero*] entonces $not s$ #text(color)[*falso*].
+  - si $s$ #text(color)[*verdadero*] y $t or not s$ #text(color)[*verdadero*], $t$ debe ser #text(color)[*verdadero*].
+  - si $p$ #text(color)[*verdadero*] y $p then r$ #text(color)[*verdadero*], $r$ #text(color)[*verdadero*].
 ]
 
-== Proposiciones primitivas
-Las proposiciones primitivas son proposiciones que no se pueden formar a partir de otras proposiciones usando conectores lógicos.
+== Reglas de Inferencia
+Sean $p,q,r$ proposiciones primitivas y $F_0$ una _contradicción_, se cumplen:
 
-== Orden de precedencia
-Para simplificar la notación se establece un orden de precedencia de los conectores lógicos y es:
+#wide_list(
+[$inference(p, q, conclusion: p and q)$],
+  [Regla de la Conjunción],
+[$inference(p then q, p, conclusion: q)$],
+  [Modus Ponens],
+[$inference(p then q, not q, conclusion: not p)$],
+  [Modus Tollens],
+[$inference(p then q, q then r, conclusion: p then r)$],
+  [Ley de Silogismo],
+[$inference(p or q, not p, conclusion: q)$],
+  [Regla del Silogismo Disyuntivo],
+[$inference(not p then F_0, conclusion: p)$],
+  [Regla de Contradicción],
+[$inference(p and q, conclusion: p)$],
+  [Regla de Simplificación Conjuntiva],
+[$inference(p, conclusion: p or q)$],
+  [Regla de Amplificación Disyuntiva],
+[$inference(p and q, p then (q then r), conclusion: r)$],
+  [Regla de Demostración Condicional],
+[$inference(p then r, q then r, conclusion: (p or q) then r)$],
+  [Regla de Demostración por Casos],
+[$inference(p then q, r then s, p or r, conclusion: q or s)$],
+  [Regla del Dilema Constructivo],
+[$inference(p then q, r then s, not q or not s, conclusion: not p or not r)$],
+  [Regla del Dilema Destructivo],)
 
-#grid(columns: (auto, 1fr))[
-#table(columns: (auto, auto),
-        align: center,
-        [Conector], [Precedencia],
-        $not$, [1],
-        $and$, [2],
-        $or$,  [3],
-        $->$,  [4],
-        $<->$, [5])][
-    #align(center + horizon)[
-        De forma que la expresión $((p or (q and (not r))) -> s) <-> t$\
-        es equivalente a $p or q and not r -> s <-> t$
-    ]
-]
-
-== Tautologías y Contradicciones
-Las proposiciones compuestas que tienen valor de verdad verdadero independientemente del valor de las proposiciones que las componen son tautologías por el contrario las que son falsas independientemente del valor de las proposiciones que las componen son contradicciones. Notamos a las tautologías como $T_0$ y las contradicciones como $F_0$.
-
-= Equivalencia lógica
-Dos proposiciones $p$ y $r$ son lógicamente equivalentes, notamos $p <=> r$, si la proposición $p <-> r$ es una tautología.
-
-- Propiedades:
-    + $p <=> p$
-    + $p <=> q$, entonces $q <=> p$
-    + $p <=> q$ y $q <=> r$, entonces $p <=> r$
-
-- Ejemplo importante (EMI): $p -> q <=> not p or q$
-
-= Leyes de la lógica
-#columns(3)[
-+ Ley de doble negación\
-  $not (not p) <=> p$
-+ Leyes de De Morgan\
-  $not (p or q) <=> not p and not q$\
-  $not (p and q) <=> not p or not q$
-+ Leyes conmutativas\
-  $p or q <=> q or p$\
-  $p and q <=> q and p$
-+ Leyes asociativas\
-  $p or (q or r) <=> (p or q) or r$\
-  $p and (q and r) <=> (p and q) and r$
-+ Leyes distributivas\
-  $p or (q and r) <=> (p or q) and (p or r)$\
-  $p and (q or r) <=> (p and q) or (p and r)$
-+ Leyes idempotentes\
-  $p or p <=> p$\
-  $p and p <=> p$
-+ Leyes de neutro\
-  $p or F_0 <=> p$\
-  $p and T_0 <=> p$
-+ Leyes inversas\
-  $p or not p <=> T_0$\
-  $p and not p <=> F_0$
-+ Leyes de dominación\
-  $p or T_0 <=> T_0$\
-  $p and F_0 <=> F_0$\
-+ Leyes de absorción\
-  $p and (p or q) <=> p$\
-  $p or (p and q) <=> p$
-]
-#todo[Completar la tabla]
-
-= Reglas de sustitución
-+ Supongamos que una proposición compuesta $P$ es una tautología y que $p$ es una proposición primitiva que aparece en $P$. Si reemplazamos cada ocurrencia de $p$ en $P$ por la misma proposición $q$, entonces la proposición resultante también es una tautología
-+ Sea $P$ una proposición compuesta y $p$ una proposición arbitraria que aparece en $P$. Sea $q$ una proposición tal que $p <=> q$. Supongamos que reemplazamos en $P$ una o mas ocurrencias de $p$ por $q$ y llamemos $P_1$ a la proposición obtenida.  Entonces $P <=> P_1$.
-
-== Implicaciones varias:
-+ Implicación directa: $p -> q$
-+ Implicación recíproca: $q -> p$
-+ Implicación inversa: $not p -> not q$
-+ Implicación contrapositiva: $not q -> not p$
-
-= Reglas de inferencia
-== Argumentos
-Un argumento es una proposición de la forma: $p_1 and p_2 and dots and p_n -> q$.  Un argumento válido es un argumento y una tautología. A las proposiciones $p_i$ se les llama premisas y $q$ es conclusión.
-
-== Reglas de inferencia
-Las reglas de inferencia nos permiten determinar la validez de un argumento sin usar tablas de verdad. La notación es la siguiente:
-#align(center)[
-    #inference_rule($p_1$, $p_2$, $dots$, $p_n$, conclusion: [$q$#h(1.25em)])
-]
-Donde $p_1 and p_2 and dots and p_n -> q$ es la tautología asociada.
-#v(1em)
-#columns(4)[
-    #box[
-        Modus Ponens:
-        #inference_rule($p -> q$, $p$, conclusion: $q$)
-    ]\ #box[
-        Modus Tollens:
-        #inference_rule($p -> q$, $not q$, conclusion: $not p$)
-    ]\ #box[
-        Ley de Silogismo:
-        #inference_rule($p -> q$, $q -> r$, conclusion: $p -> r$)
-    ]\ #box[
-        \
-        #inference_rule($p$, $q$, conclusion: $p and q$)
-    ]\ #box[
-        \
-        #inference_rule($p or q$, $not p$, conclusion: $q$)
-    ]\ #box[
-        Inducción del\ bicondicional:
-        #inference_rule($p -> q$, $q -> p$, conclusion: $p <-> q$)
-    ]\ #box[
-        Eliminación del\ bicondicional:
-        #inference_rule($p <-> q$, $p$, conclusion: $q$)
-    ]\ #box[
-        Eliminación del\ bicondicional:
-        #inference_rule($p <-> q$, $not p$, conclusion: $not q$)
-    ]\ #box[
-        Eliminación del\ bicondicional:
-        #inference_rule($p <-> q$, $p or q$, conclusion: $p and q$)
-    ]\ #box[
-        Reducción al absurdo:
-        #inference_rule($p -> F_0$, conclusion: $not p$)
-    ]
-]
-#todo[Completar la tabla]
-
-= Cuantificadores
-== Variables
-Una variable un identificador al cual se le puede asignar un valor. Por ejemplo si $x$ es una variable puede tomar como valor el número 2.
-
-== Proposiciones abiertas
-=== Definición
-Una proposición abierta es una expresión que contiene una o más variables de forma que si las variables toman un valor la proposición abierta pasa a ser una proposición.
-
-=== Notación
-Proposición de una sola variable: $p(x)$ por ejemplo $x + 1 = 2$.  $p(x)$ es la proposición abierta de variable $x$.  Proposición de varias variables: $p(x, y)$ o $p(x_1,dots,x_n)$, por ejemplo la proposición abierta $x = y$.
-
-== Universo
-El universo es la familia de elementos que se permiten asignar a las variables. Se simboliza #universe.
+#line(length: 100%)
 
 == Cuantificadores
-Los cuantificadores nos permiten formular una proposición mediante el uso de una proposición abierta y valores posibles de la variable.
+=== Proposiciones abiertas
+Expresiones como $x^2 + 1 = 0$ inicialmente no cumplen con las características de una proposición, pero *si reemplazamos $x$ por ciertos valores*, la expresión se convierte en una. En estos casos, $x$ se considera una _variable_.
 
-=== Existencial
-El cuantificador existencial $exists$ aplicado en la variable $x$ para la proposición abierta $p(x)$ notado $exists x[p(x)]$ es una proposición verdadera si existe por lo menos un $x$ en el universo tal que $p(x)$ es verdadera y si no es falsa.
+#example(color : color, title: "definición")[
+Una _afirmación_ es una *proposición abierta* si:
+- Contiene una o más variables.
+- Se convierte en una proposición cuando las variables son reemplazadas por valores permitidos.
+Las proposiciones abiertas se denotan de la forma $p(x)$.
+]
 
-=== Universal
-El cuantificador universal $forall$ aplicado en la variable $x$ para la proposición abierta $p(x)$ notado $forall x[p(x)]$ es una proposición verdadera para todo $x$ en el universo se cumple $p(x)$, si no es falsa.
+=== Cuantificadores
+Los cuantificadores son formas de formar proposiciones a partir de proposiciones abiertas y valores posibles de las variables.
 
-== Equivalencia lógica
-Se dice que una proposición abierta $p(x)$ es lógicamente equivalente a otra proposición abierta $q(x)$ si se cumple $forall x[p(x)<->q(x)]$ y se escribe $p(x)<=>q(x)$
+- *Cuantificador existencial*: $exists x space p(x)$ (existe un $x$ tal que $p(x)$ es #text(color)[*VERDADERA*]).
+Esta proposición es verdadera si hay al menos un valor de $x$ en el universo dado que consiga que $p(x)$ sea verdadera.
+- *Cuantificador universal*: $forall x space p(x)$ (para todo $x$ se tiene que $p(x)$ es #text(color)[*VERDADERA*]).
+Esta proposición es verdadera si todo valor posible de $x$ en el universo dado hace que $p(x)$ sea verdadera.
 
-== Implicación lógica
-Se dice que una proposición abierta $p(x)$ implica lógicamente a otra proposición abierta $q(x)$ si se cumple $forall x[p(x)->q(x)]$ y se escribe $p(x)=>q(x)$
+Es importante tener en cuenta en qué *universo* existen nuestras variables (esto es, el _conjunto_ de todas las variables permitidas).
+#example(color : color)[
+Supongamos la proposición $p(x) space : space exists x space x^2 = 2$ 
+Si el universo ($universe$) es $NN$, $p(x)$ es #text(color)[*FALSA*], ya que no existe un número natural que cumpla la proposición. Sin embargo, si $universe = RR$, la proposición se vuelve #text(color)[*VERDADERA*], ya que $sqrt(2) in RR$.
+]
 
-== Más implicaciones lógicas
-- La directa        $forall x [p(x) -> q(x)]$
-- La reciproca      $forall x [q(x) -> p(x)]$
-- La inversa        $forall x [not p(x) -> not q(x)]$
-- La contrapositiva $forall x [not q(x) -> not p(x)]$
+=== Equivalencia Lógica
+Sean $p(x)$ y $q(x)$ dos proposiciones abiertas para un universo dado, decimos que $p(x)$ y $q(x)$ son _lógicamente equivalentes_ cuando $p(a) bic q(a)$ es *verdadero* $forall a in universe$. Esto se escribe:
+$ forall x [p(x) iff q(x)] $
+=== Implicancia Lógica
+Sean $p(x)$ y $q(x)$ dos proposiciones abiertas para un universo dado, decimos que $p(x)$ _implica lógicamente_ $q(x)$ cuando $p(a) then q(a)$ es *verdadero* $forall a in universe$. Esto se escribe:
+$ forall x [p(x) implies q(x)] $
 
-=== Propiedades
-+ $exists x [p(x) and q(x)] => exists x [p(x)] and exists x [q(x)]$
-+ $exists x [p(x) or q(x)] <=> exists x [p(x)] or exists x [q(x)]$
-+ $forall x [p(x) and q(x)] <=> forall x [p(x)] and forall x
-[q(x)]$
-+ $forall x [p(x)] or forall x [q(x)] => forall x [p(x) or q(x)]$
+=== Negación de Cuantificadores
+- $not [exists x space p(x)] iff forall x space not p(x)$
+- $not [forall x space p(x)] iff exists x space not p(x)$
+Usando estas reglas, tenemos:
+- $not [exists x space not p(x)] iff forall x space not not p(x) iff forall x space p(x)$
+- $not [forall x space not p(x)] iff exists x space not not p(x) iff exists x space p(x)$
 
-== Negación de los cuantificadores
-+ $not (exists x[p(x)]) <=> forall x[not p(x)]$
-+ $not (forall x[p(x)]) <=> exists x[not p(x)]$
+#example(color : color)[
+Estas negaciones son útiles para determinar la veracidad de una proposición. Imaginemos una proposición $p(x), x in N$: si x es impar, entonces $2 x$ es impar. Esto se puede escribir:
+$
+  p(x): forall x [q(x) then s(x)] quad  text("donde") quad cases(
+                                                           q(x): #h(1cm) &x text("es impar"),
+                                                           s(x):         &2x text("es impar"))
+$
+Probar la falsedad de esto, es lo mismo que probar $exists x space not[q(x) then s(x)]$. En este caso es sencillo, si $x = 1 implies 2x = 2$ y $2$ no es impar. Por ende p(x) es falsa.
+]
