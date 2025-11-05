@@ -1,22 +1,17 @@
 #import "../macros.typ": *
 #import "../estilo.typ": * 
 
-#let title = "Principio de Inducción"
-#let author = "Hirch, Juan Manuel"
 #let color = blue 
 
 #show: init.with(
-	title: title,
-	author: author,
 	color: color,
-	//full_title: false,
-	font_size: 12pt,
-  ver: "v1.0",
 	//debug: true
 )
+
+
 = Principio de Inducción
-En esta seccion aprenderemos una técnica utilizada para demostrar la validez de proposiciones de la forma $forall k space p(k), "con" k in NN$.
-== Principio de buen orden
+En esta sección aprenderemos una técnica utilizada para demostrar la validez de proposiciones de la forma $forall k space p(k), "con" k in NN$.
+=== Principio de buen orden
 + Sea $A subset.eq RR$ entonces $A$ tiene *primer elemento* $a$ si $exists a in A : forall x in A space a < x$.
 + Un conjunto $A subset.eq RR$ está *bien ordenado* si todo $X subset.eq A$ no vacío tiene primer elemento.
 
@@ -53,8 +48,8 @@ Se puede generalizar el principio de inducción para afirmaciones que comiencen 
 + Sea $q(n) = p(n_0 + n - 1)$.
 + Entonces $q(1) = p(n_0 + 1 - 1) = p(n_0)$ es verdadero.
 + Y $q(n) -> q(n+1) iff_((1)) p(n_0 + n - 1) -> p(n_0 + n)$.
-+ $q(1) "es verdadero" and  q(n) -> q(n+1)#super[(3)] implies_("ind.") forall n >= 1 space q(n)$ es verdadero.
-+ pero $q(1) =_((1)) p(n_0)$, entonces $forall n >= n_0 space p(n)$ es verdadero. #super[(4)]
++ $q(1) "es verdadero" and  q(n) -> q(n+1)$#super[(3)] $implies_("ind.") forall n >= 1 space q(n)$ es verdadero.
++ pero $q(1) =_((1)) p(n_0)$, entonces $forall n >= n_0 space p(n)$ es verdadero.#super[(4)]
 ]
 
 #let def_xoria(nombre, op, sim) = [

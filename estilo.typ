@@ -43,13 +43,13 @@
 }
 
 #let init(
+  first-page: false,
   title: "Titulo",
-  author: "Nombre Apellido",
+  author: "Alejandria",
   color: blue,
   font: "Libertinus Serif",
   font_size: 13pt,
   full_title: false,
-  ver: "v0.0",
   debug: false,
   doc
 ) = {
@@ -117,24 +117,23 @@
 //    #set text(18pt, weight: "bold")
 //    #block((it.body))
 //  ]
-
-  if full_title == true [
-    #title_fullpage(
-      color: color,
-      title: text(50pt, title),
-      author: author,
-      ver: ver
-    )
-  ]
-  else [
-    #title_halfpage(
-      color: color,
-      title: text(50pt, title),
-      author: author,
-      ver: ver
-    )
-  ]
-
-  pagebreak()
+  if first-page == true {
+    if full_title == true [
+      #title_fullpage(
+        color: color,
+        title: text(50pt, title),
+        author: author,
+        ver: ver
+      )
+    ] else [
+      #title_halfpage(
+        color: color,
+        title: text(50pt, title),
+        author: author,
+        ver: ver
+      )
+    ]
+    pagebreak()
+  }
   doc
 }

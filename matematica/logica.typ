@@ -3,16 +3,10 @@
 
 #let color = blue
 
-#show: init.with(
-  title: "Lógica",
-  author: "Hirch, Juan Manuel & Isern, Pedro Ignacio",
-  ver: "v1.0",
+#show: init.with( 
   color: color,
-  //full_title: true,
   //debug: true
 )
-
-#todo()[Agregar todas las tildes que falten]
 
 = Lógica
 == Proposiciones
@@ -85,7 +79,6 @@ Llamamos _premisas_ al conjunto de todas las $p$, y _conclusión_ a $q$. Se dice
 
 $ p_1 and p_2 and p_3 and dots and p_k implies q $
 
-// TODO: Cambiar implicancia lógica
 También llamamos a esto *_Implicacion Lógica_*.
 
 #example(color: color)[
@@ -154,7 +147,7 @@ Esta proposición es verdadera si hay al menos un valor de $x$ en el universo da
 - *Cuantificador universal*: $forall x space p(x)$ (para todo $x$ se tiene que $p(x)$ es #text(color)[*VERDADERA*]).
 Esta proposición es verdadera si todo valor posible de $x$ en el universo dado hace que $p(x)$ sea verdadera.
 
-Es importante tener en cuenta en qué *universo* existen nuestras variables (esto es, el _conjunto_ de todas las variables permitidas). 
+Es importante tener en cuenta en qué *universo* existen nuestras variables (esto es, el _conjunto_ de todas las variables permitidas).
 #example(color : color)[
 Supongamos la proposición $p(x) space : space exists x space x^2 = 2$ 
 Si el universo ($universe$) es $NN$, $p(x)$ es #text(color)[*FALSA*], ya que no existe un número natural que cumpla la proposición. Sin embargo, si $universe = RR$, la proposición se vuelve #text(color)[*VERDADERA*], ya que $sqrt(2) in RR$.
@@ -177,10 +170,9 @@ Usando estas reglas, tenemos:
 #example(color : color)[
 Estas negaciones son útiles para determinar la veracidad de una proposición. Imaginemos una proposición $p(x), x in N$: si x es impar, entonces $2 x$ es impar. Esto se puede escribir:
 $
-  p(x): forall x [q(x) then s(x)] quad  text("donde") quad casesAlign(
-                                                           q(x):, x text("es impar"),
-                                                           s(x):, 2x text("es impar"),
-                                                           comma: #false)
-$ 
+  p(x): forall x [q(x) then s(x)] quad  text("donde") quad cases(
+                                                           q(x): #h(1cm) &x text("es impar"),
+                                                           s(x):         &2x text("es impar"))
+$
 Probar la falsedad de esto, es lo mismo que probar $exists x space not[q(x) then s(x)]$. En este caso es sencillo, si $x = 1 implies 2x = 2$ y $2$ no es impar. Por ende p(x) es falsa.
 ]

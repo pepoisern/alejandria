@@ -4,10 +4,7 @@
 #let color = blue
 
 #show: init.with(
-  title: "Conjuntos",
-  author: "Hirch, Juan Manuel",
   color: color,
-  ver: "v0.2",
   //debug: true
 )
 
@@ -28,15 +25,14 @@ Se cumplen:
 ]
 
 === Conjunto Universal
-Un conjunto universal #universe es aquel del cual tomamos los elementos para determinar la veracidad
-o falsedad de proposiciones abiertas cuantificadas.
+Un conjunto universal #universe es aquel del cual tomamos los elementos para determinar la veracidad o falsedad de proposiciones abiertas cuantificadas.
 
 == El Conjunto Vacío
 
-=== Existencia del Conjunto Vacío.
+=== Existencia del Conjunto Vacío
 Existe el conjunto vacío #emptyset y es aquel que _no tiene elementos_. $exists emptyset [forall x [x in.not emptyset]]$.
 
-=== Unicidad del Conjunto Vacío.
+=== Unicidad del Conjunto Vacío
 Existe un único conjunto vacío. Sea $A$ un conjunto, si no existe ningún $x$ tal que $x in A$ se da que $A = emptyset$.
 
 #example(color : color, title: "lema")[
@@ -165,15 +161,15 @@ Al _complemento_ de $A$ es $overline(A) = universe - A = {x in universe: x in.no
 Los diagramas de Venn son un método para graficar conjuntos, utilizando líneas cerradas que encierran a los elementos, mostrando cuáles estan incluidos en cada conjunto.
 Se pueden representar las operaciones entre conjuntos utilizando estos diagramas:
 #align(center)[
-  #grid(columns: (1fr, 1fr), 
-       grid(columns: 1, text[*Unión:*], image("../sources/union.jpg")),
-       grid(columns: 1, text[*Intersección:*], image("../sources/inter.jpg")),
-       grid(columns: 1, text[*Diferencia:*], image("../sources/diff.jpg")),
-       grid(columns: 1, text[*Diferencia Simétrica:*], image("../sources/diff_s.jpg"))
-       )
+  #table(inset: 0pt, stroke: none, columns: (1fr, 1fr),
+       table(inset: 1pt, stroke: none, columns: 1, text[*Unión:*], image("../recursos/union.jpg")),
+       table(inset: 1pt, stroke: none, columns: 1, text[*Intersección:*], image("../recursos/inter.jpg")),
+       table(inset: 1pt, stroke: none, columns: 1, text[*Diferencia:*], image("../recursos/diff.jpg")),
+       table(inset: 1pt, stroke: none, columns: 1, text[*Diferencia Simétrica:*], image("../recursos/diff_s.jpg"))
+  )
 ]
-== Leyes de teoría de Conjuntos
 
+== Leyes de teoría de Conjuntos
 Dados los conjuntos $A, B, C subset.eq universe$:
 
 \
@@ -218,7 +214,7 @@ $ x in union.big F iff exists (A in F), x in A $
 Si $F = {A_1, A_2, dots A_n}$ notamos $union.big F$:
 $ union.big^n_(i=1) A_i = A_1 union A_2 union dots union A_n $
 Si $I$ es un conjunto de índices y $F = {A_i : i in I}$ notamos $union.big F$:
-$ union.big_(i in I) A_i = {x in universe : x in A_i #text[para algún] i in I} $ 
+$ union.big_(i in I) A_i = {x in universe : x in A_i #text[para algún] i in I} $
 ]
 
 === Intersección Generalizada
@@ -228,11 +224,11 @@ $ x in inter.big F iff forall (A in F), x in A $
 Si $F = {A_1, A_2, dots A_n}$ notamos $inter.big F$:
 $ inter.big^n_(i=1) A_i = A_1 inter A_2 inter dots inter A_n $
 Si $I$ es un conjunto de índices y $F = {A_i : i in I}$ notamos $inter.big F$:
-$ inter.big_(i in I) A_i = {x in universe : x in A_i #text[para todo] i in I} $ 
+$ inter.big_(i in I) A_i = {x in universe : x in A_i #text[para todo] i in I} $
 ]
 
 == Pares Ordenados
-Un par ordenado se define $(a, b)$, con primer elemento $a$ y segundo elemento $b$.  
+Un par ordenado se define $(a, b)$, con primer elemento $a$ y segundo elemento $b$.
 
 === Igualdad de Pares Ordenados
 Dados $a,b,c,d$ tenemos que $(a,b) = (c,d) iff a = c and b = d$
@@ -245,7 +241,7 @@ Dadas dos $n$-tuplas $(a_1, dots space, a_n)$ y $(b_1, dots space, b_n)$ tenemos
 
 === Producto Cartesiano
 Dados dos conjuntos $A, B$, el _producto cartesiano_ $A times B$ se define como el conjunto de todos los posibles pares ordenados en los cuales el primer elemento pertenece a $A$, y el segundo a $B$. Esto es:
-$ A times B = {(a,b) : a in A and b in B} $ 
+$ A times B = {(a,b) : a in A and b in B} $
 
 Generalizado, dados un número finito de conjuntos $A_1, dots, A_n$, el _producto cartesiano_ de los mismos es el conjunto de todas las posibles $n$-tuplas cuyo $k$-ésimo elemento pertenece a $A_k$. Esto es:
 $ A_1 times dots times A_n = {(a_1, dots space, a_n): a_1 in A_1, dots space, a_n in A_n} $
