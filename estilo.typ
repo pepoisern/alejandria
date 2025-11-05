@@ -45,7 +45,7 @@
 #let init(
   first-page: false,
   title: "Titulo",
-  author: "Alejandria",
+  author: "Alejandría",
   color: blue,
   font: "Libertinus Serif",
   font_size: 13pt,
