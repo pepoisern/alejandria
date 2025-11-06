@@ -42,8 +42,8 @@
   let p = for (c) in premises.pos() { ($#c$,) }
   table(
     stroke: (x, y) => (top: if y == premises.pos().len() { black } else { none }),
-    inset: (top: 0.1em,
-      bottom: 0.2em,
+    inset: (top: 0.2em,
+      bottom: 0.5em,
       left: 0.1em,
       right: 0.1em),
     align: left,
